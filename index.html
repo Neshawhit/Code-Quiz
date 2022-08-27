@@ -10,23 +10,29 @@
       user-select: none;
     }
   </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <section id="start">
     <h2>Start Quiz</h2>
-    <button>Begin</button>
+    <button id="start-btn">Begin</button>
+  </section>
+  <section id="time">
+    <h4>Time: <span id="time-left">20</span></h4>
   </section>
   <section id="quiz">
-    <h2 id="title">Questions</h2>
+    <h2 id="title">This is question 1</h2>
     <div id="questions">
-
+      <button id="choice1">Choice 1</button>
+      <button id="choice2">Choice 2</button>
+      <button id="choice3">Choice 3</button>
     </div>
   </section>
-  <section id="end">
+  <!-- <section id="end">
     <h2>Enter Initials</h2>
     <input type="text" />
-    <button>Submit</button>
-  </section>
+    <button id="submit">Submit</button>
+  </section> -->
   <script src="./script.js"></script>
 </body>
 </html>
