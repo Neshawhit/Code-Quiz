@@ -12,17 +12,24 @@ var quizContainer = document.querySelector("#quiz");
 var startContainer = document.querySelector("#start");
 var timeContainer = document.querySelector("#time");
 var submitButton = document.querySelector("#submit")
-var endQuiz = document.querySelector("#end");
+var endQuizSection = document.querySelector("#end");
 var timeSpan = document.querySelector("#time-left");
 var questionH2 = document.querySelector("#title");
 var choice1 =document.querySelector("#choice1");
 var choice2 =document.querySelector("#choice2");
 var choice3 =document.querySelector("#choice3");
-var userInitials = document.querySelector("text");
+var userInitialsText = document.querySelector("input");
+
 var timeInterval = 60;
 //var score = count (correctAnswer)
 //var setTime = 0;
 var currentIndex = 0;
+var points = 0;
+// var finalQuestion = currentIndex[3];
+// var results = userInitials + score;
+
+
+
 
 var quizQuestions = [
     {
@@ -43,7 +50,7 @@ var quizQuestions = [
         },
         correctAnswer: "i"
     },
-
+    
     {
         question: "Which is a Boolean?",
         answerChoices: {
@@ -62,6 +69,8 @@ var quizQuestions = [
         },
         correctAnswer: "#id"
     },
+    
+    
 ];
 
 
@@ -70,16 +79,16 @@ function deductTime() {
     timeInterval--;
     if (timeInterval === 0){
         clearInterval(timeInterval);
-        endQuiz.style.display = "block";
+        endQuizSection.style.display = "block";
         quizContainer.style.display = "none";
         timeContainer.style.display = "none";
-    
+        
     }
    if(timeInterval < 0){
-    endQuiz.style.display = "block";
-    quizContainer.style.display = "none";
-    timeContainer.style.display = "none";
-
+       endQuizSection.style.display = "block";
+       quizContainer.style.display = "none";
+       timeContainer.style.display = "none";
+       
     
    }
     
@@ -93,9 +102,9 @@ function startQuiz() {
     quizContainer.style.display = "block";
     timeContainer.style.display = "block";
     startContainer.style.display = "none";
-    endQuiz.style.display = "none";
+    endQuizSection.style.display = "none";
     
-
+    
     timeSpan.textContent = timeInterval
 
     setInterval(deductTime, 1000)
@@ -104,8 +113,8 @@ function startQuiz() {
 }
 
 function displayQuestion () {
-// if statement to check if there is more questions to display 
-
+    // if statement to check if there is more questions to display 
+    
     questionH2.textContent = quizQuestions[currentIndex].question;
     choice1.textContent = quizQuestions [currentIndex].answerChoices.a
     choice2.textContent = quizQuestions [currentIndex].answerChoices.b
@@ -114,35 +123,43 @@ function displayQuestion () {
     choice1.addEventListener("click", nextQuestion)
     choice2.addEventListener("click", nextQuestion)
     choice3.addEventListener("click", nextQuestion)
-    if (nextQuestion !== nextQuestion) { //figure out how to identify an empty array and go to next section 
+    if (nextQuestion === null ) { 
+        preventDefault
+   
+        //figure out how to identify an empty array and go to next section 
         // choice1.addEventListener("click", nextQuestion)
         // choice2.addEventListener("click", nextQuestion)
         // choice3.addEventListener("click", nextQuestion)
         
-        endQuiz.style.display = "block";
-      
+        endQuizSection.style.display = "block";
+        
+        return;
         
     }
-
-
-
+    
+    
+    
 }
+function endQuiz (nextQuestion){
+     endQuizSection.style.display = "block";
+    
+        }
 
 function nextQuestion (event) {
     var selectedAnswer = event.target.textContent;
     var correctAnswer = quizQuestions[currentIndex].correctAnswer;
     
-    // check if what they selected is correct
+    // check if what they selected is correct done
     // log correct answers
     if(selectedAnswer == correctAnswer) {
         alert("Correct! +25pts") 
-        // (results + 25)
+        points = (points += 25) //figure out how to collect and log score
         
     } else {
         alert("Wrong! - 20 seconds")
         timeInterval = (timeInterval - 20)
         
-        //figure out how to deduct time
+        //figure out how to deduct time done
     }
     
     
@@ -150,17 +167,27 @@ function nextQuestion (event) {
     displayQuestion()
 }
 
+
 function collectResults(){
-var results = count(quizQuestions.question.correctAnswer)
-    console.log(userInitials)
+    var finalScore = points;
+   var userInitials= userInitialsText.value 
+
+    console.log(userInitials )
+    console.log(points)
+    localStorage.setItem(points, userInitials)
+    
 }
 
 //  function keepScore(correctAnswer){
-//       var results = 
-
-
-
-console.log(userInitials)
-
-startButton.addEventListener("click", startQuiz)
-submitButton.addEventListener("click", collectResults)
+    //       var results = 
+    
+    
+    
+    startButton.addEventListener("click", startQuiz)
+    submitButton.addEventListener("click", collectResults)
+    
+    // currentIndex[3].choice1.addEventListener("click", endQuiz);
+    // currentIndex[3].choice2.addEventListener ("click", endQuiz);
+    // currentIndex[3].choice3.addEventListener("click", endQuiz);
+    
+    //currentIndex[3].addEventListener("click", endQuiz )

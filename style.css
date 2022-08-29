@@ -15,16 +15,18 @@ header{
     color: black;
     padding: 20px;
     border:3px dashed black;
-    margin: 10px;
-    justify-content: center;
-    width:700px;
+    margin: auto;
+    width:500px;
+    height: 250px;
+    text-align: center;
+    align-content: center;
 }
 
 #time {
     display: none;
 }
 h4{
-
+   float: right;
     background-color: red;
     padding:2px;
     margin: none;
@@ -32,32 +34,37 @@ h4{
     width:100px;
 }
 #questions button{
-    background-color: orange;
+    background-color: darkorange;
     color: white;
-    justify-content: center;
+    margin: auto;
+    padding: 10px;
 
 }
-#choice1 #choice2 #choice3{
+/* #choice1 #choice2 #choice3{
     background-color: lightblue;
-    color: grey;
-}
+    color:black;
+} */
 
 #end {
     background-color: rgb(97, 97, 198) ;
     color: white;
     display: none;
     justify-content: center;
-    width: 700px;
+    width: 500px;
     border: 3px solid grey ;
+    text-align: center;
+    margin: auto;
 }
 #start {
+    font-size: 28px;
     background-color: lightcyan;
     padding: 10px;
     border: 3px solid grey;
-    margin: 10px;
-    width: 700px;
-    height: auto;
-    justify-content: center;
+    margin: auto;
+    width: 500px;
+    height: 250px;
+    text-align: center;
+    
 
     
 }
