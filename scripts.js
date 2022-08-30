@@ -25,7 +25,7 @@ var timeInterval = 60;
 //var setTime = 0;
 var currentIndex = 0;
 var points = 0;
-// var finalQuestion = currentIndex[3];
+
 // var results = userInitials + score;
 
 
@@ -71,6 +71,7 @@ var quizQuestions = [
     },
     
     
+    
 ];
 
 
@@ -114,6 +115,7 @@ function startQuiz() {
 
 function displayQuestion () {
     // if statement to check if there is more questions to display 
+  //  var lastQuestion = quizQuestions [3]
     
     questionH2.textContent = quizQuestions[currentIndex].question;
     choice1.textContent = quizQuestions [currentIndex].answerChoices.a
@@ -123,25 +125,29 @@ function displayQuestion () {
     choice1.addEventListener("click", nextQuestion)
     choice2.addEventListener("click", nextQuestion)
     choice3.addEventListener("click", nextQuestion)
-    if (nextQuestion === null ) { 
-        preventDefault
-   
+    // if (nextQuestion === ) { 
+        
+        //  endQuizSection.style.display = "block"
+        // quizContainer.style.display = "none";
+        // return;
+        
+  
         //figure out how to identify an empty array and go to next section 
         // choice1.addEventListener("click", nextQuestion)
         // choice2.addEventListener("click", nextQuestion)
         // choice3.addEventListener("click", nextQuestion)
         
-        endQuizSection.style.display = "block";
         
-        return;
         
-    }
+       
+   // }
     
     
     
 }
-function endQuiz (nextQuestion){
+function endQuiz (){
      endQuizSection.style.display = "block";
+     quizContainer.style.display = "none";
     
         }
 
@@ -164,7 +170,14 @@ function nextQuestion (event) {
     
     
     currentIndex++;
+   
+   if (currentIndex === quizQuestions.length){
+    endQuiz();
+   } else {
     displayQuestion()
+
+   }
+    
 }
 
 
